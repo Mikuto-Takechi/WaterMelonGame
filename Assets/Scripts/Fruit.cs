@@ -18,9 +18,9 @@ public class Fruit : MonoBehaviour
     }
     void Update()
     {
-        if(transform.position.y >= GameManager.Instance.GameOverLine && _gameOverJudgment)
+        if(transform.position.y >= GameManager.instance.GameOverLine && _gameOverJudgment)
         {
-            GameManager.Instance.GameOver();
+            GameManager.instance.GameOver();
         }
     }
     void OnCollisionEnter(Collision collision)

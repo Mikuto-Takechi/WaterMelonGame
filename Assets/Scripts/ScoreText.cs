@@ -13,6 +13,6 @@ public class ScoreText : MonoBehaviour
     }
     void Update()
     {
-        _text.text = $"Score : {GameManager.Instance.Score}";
+        _text.text = $"Score : {GameManager.instance.Score}";
     }
 }

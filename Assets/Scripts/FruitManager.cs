@@ -29,6 +29,7 @@ public class FruitManager : MonoBehaviour
                 Vector3 instantiatePosition = Vector3.Lerp(fruit.Item1.transform.position, fruit.Item2.transform.position, 0.5f);
                 Destroy(fruit.Item1.gameObject);
                 Destroy(fruit.Item2.gameObject);
+                AudioManager.instance.PlaySE("kotsudumi");
                 NewFruit(fruit.Item1._level, instantiatePosition);
             }
             _fruits.Clear();
@@ -43,43 +44,43 @@ public class FruitManager : MonoBehaviour
                 Instantiate(_fruitList.Level0, position, Quaternion.identity);
                 break;
             case 1:
-                GameManager.Instance.Score += 1;
+                GameManager.instance.Score += 1;
                 Instantiate(_fruitList.Level1, position, Quaternion.identity);
                 break;
             case 2:
-                GameManager.Instance.Score += 3;
+                GameManager.instance.Score += 3;
                 Instantiate(_fruitList.Level2, position, Quaternion.identity);
                 break;
             case 3:
-                GameManager.Instance.Score += 6;
+                GameManager.instance.Score += 6;
                 Instantiate(_fruitList.Level3, position, Quaternion.identity);
                 break;
             case 4:
-                GameManager.Instance.Score += 10;
+                GameManager.instance.Score += 10;
                 Instantiate(_fruitList.Level4, position, Quaternion.identity);
                 break;
             case 5:
-                GameManager.Instance.Score += 15;
+                GameManager.instance.Score += 15;
                 Instantiate(_fruitList.Level5, position, Quaternion.identity);
                 break;
             case 6:
-                GameManager.Instance.Score += 21;
+                GameManager.instance.Score += 21;
                 Instantiate(_fruitList.Level6, position, Quaternion.identity);
                 break;
             case 7:
-                GameManager.Instance.Score += 28;
+                GameManager.instance.Score += 28;
                 Instantiate(_fruitList.Level7, position, Quaternion.identity);
                 break;
             case 8:
-                GameManager.Instance.Score += 36;
+                GameManager.instance.Score += 36;
                 Instantiate(_fruitList.Level8, position, Quaternion.identity);
                 break;
             case 9:
-                GameManager.Instance.Score += 45;
+                GameManager.instance.Score += 45;
                 Instantiate(_fruitList.Level9, position, Quaternion.identity);
                 break;
             case 10:
-                GameManager.Instance.Score += 55;
+                GameManager.instance.Score += 55;
                 Instantiate(_fruitList.Level10, position, Quaternion.identity);
                 break;
         }

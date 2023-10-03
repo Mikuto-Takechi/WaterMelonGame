@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pointer : MonoBehaviour
@@ -26,6 +25,7 @@ public class Pointer : MonoBehaviour
         if(Input.GetButton("Fire1") && _createFruitFlag)
         {
             _createFruitFlag = false;
+            AudioManager.instance.PlaySE("Œˆ’èƒ{ƒ^ƒ“‚ð‰Ÿ‚·44");
             CreateFruit();
         }
     }
@@ -65,7 +65,7 @@ public class Pointer : MonoBehaviour
     {
         while (true)
         {
-            if(trans.IsDestroyed()) yield break;
+            if(trans == null) yield break;
             if(trans.position.y <= _stopIntervalLine)
             {
                 _createFruitFlag = true;
