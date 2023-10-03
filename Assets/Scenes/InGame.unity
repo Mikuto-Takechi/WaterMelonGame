@@ -926,7 +926,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130535381}
-  m_LocalRotation: {x: 0.021676682, y: -0.0000000010751463, z: 2.3311082e-11, w: 0.99976504}
+  m_LocalRotation: {x: 0.021676682, y: 0.0000000010751459, z: -2.3311072e-11, w: 0.99976504}
   m_LocalPosition: {x: 0, y: 5, z: -23.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1462,7 +1462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614968504}
-  m_LocalRotation: {x: 0.021676682, y: -0.0000000010751463, z: 2.3311082e-11, w: 0.99976504}
+  m_LocalRotation: {x: 0.021676682, y: 0.0000000010751459, z: -2.3311072e-11, w: 0.99976504}
   m_LocalPosition: {x: 0, y: 5, z: -23.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2259,10 +2259,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2597116731220317304, guid: 8e4c8d5d13faf9d44b7ac150878e346c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9000156280885965775, guid: 8e4c8d5d13faf9d44b7ac150878e346c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2854,15 +2850,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7380295717426948020, guid: 867dac40e92f8d048b7d685378454997, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1124256
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380295717426948020, guid: 867dac40e92f8d048b7d685378454997, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4052481
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380295717426948020, guid: 867dac40e92f8d048b7d685378454997, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.2585673
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380295717426948020, guid: 867dac40e92f8d048b7d685378454997, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2939,25 +2935,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FruitManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8143119493942904296, guid: 3ce7dc172f2276449b881f29c61394c1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8143119493942904298, guid: 3ce7dc172f2276449b881f29c61394c1, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8143119493942904298, guid: 3ce7dc172f2276449b881f29c61394c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4169133
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8143119493942904298, guid: 3ce7dc172f2276449b881f29c61394c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6321752
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8143119493942904298, guid: 3ce7dc172f2276449b881f29c61394c1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8446977
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8143119493942904298, guid: 3ce7dc172f2276449b881f29c61394c1, type: 3}
       propertyPath: m_LocalRotation.w
