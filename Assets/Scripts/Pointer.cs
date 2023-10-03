@@ -23,7 +23,7 @@ public class Pointer : MonoBehaviour
         _x += _horizontal / 60;
         _x = Mathf.Clamp(_x, -6.5f, 6.5f);
         transform.position = new Vector3(_x, transform.position.y, transform.position.z);
-        if(_createFruitFlag)
+        if(Input.GetButton("Fire1") && _createFruitFlag)
         {
             _createFruitFlag = false;
             CreateFruit();

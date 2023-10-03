@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa630dffb8ee95640ae67fef9193133a, type: 3}
   m_Name: FruitList
   m_EditorClassIdentifier: 
-  Level0: {fileID: 7109291467930912494, guid: 7b25960617171a347ad7f673ddfd8fb3, type: 3}
+  Level0: {fileID: 8598389870570566367, guid: f2c60e8283213fa4db9b91392a63e5c6, type: 3}
   Level1: {fileID: 6476332183954230006, guid: 84389c328215baf4ebc4527b5dfbea30, type: 3}
   Level2: {fileID: 1310607731649316516, guid: 732294cff7193ce4c8b38cddd7e4f977, type: 3}
   Level3: {fileID: 1029921212538296374, guid: fcdbc9cc4b19fc645ab2f1e5f0531d12, type: 3}
