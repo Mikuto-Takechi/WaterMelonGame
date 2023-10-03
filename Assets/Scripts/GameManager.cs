@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("ゲームオーバー！！");
-        foreach(Fruit fruit in FindObjectsOfType<Fruit>())
+        AudioManager.instance.StopBGM("058_BPM150");
+        foreach (Fruit fruit in FindObjectsOfType<Fruit>())
         {
             Destroy(fruit.gameObject);
         }
