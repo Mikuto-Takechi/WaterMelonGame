@@ -5,22 +5,29 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     static int _totalNumber = 0;
-    public int _selfNumber { get; set; } = 0;
+    public int SelfNumber { get; set; } = 0;
     // フルーツのレベル
-    public int _level = 0;
+    public int Level = 0;
     bool _gameOverJudgment = false;
     Fruit _fruit;
+    Rigidbody _rb;
     private void Awake()
     {
         _totalNumber++;
-        _selfNumber = _totalNumber;
+        SelfNumber = _totalNumber;
         _fruit = GetComponent<Fruit>();
+        _rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
-        if(transform.position.y >= GameManager.instance.GameOverLine && _gameOverJudgment)
+        if (GameManager.Instance.GameState == GameState.GameOver)
         {
-            GameManager.instance.GameOver();
+            _rb.Sleep();
+            return;
+        }
+        if (transform.position.y >= GameManager.Instance.GameOverLine && _gameOverJudgment)
+        {
+            GameManager.Instance.GameOver();
         }
     }
     void OnCollisionEnter(Collision collision)
@@ -28,9 +35,9 @@ public class Fruit : MonoBehaviour
         _gameOverJudgment = true;
         if (collision.gameObject.TryGetComponent(out Fruit fruit))
         {
-            if (fruit._level == _level && _level < 10 && _selfNumber > fruit._selfNumber)
+            if (fruit.Level == Level && Level < 10 && SelfNumber > fruit.SelfNumber)
             {
-                FruitManager.instance._fruits.Add(Tuple.Create(_fruit, fruit));
+                FruitManager.Instance.Fruits.Add(Tuple.Create(_fruit, fruit));
             }
         }
     }

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     public float GameOverLine = 10;
     public int Score { get; set; } = 0;
+    public GameState GameState { get; set; } = GameState.InGame;
     void Awake()
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -23,9 +24,16 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("ゲームオーバー！！");
         AudioManager.instance.StopBGM("058_BPM150");
-        foreach (Fruit fruit in FindObjectsOfType<Fruit>())
-        {
-            Destroy(fruit.gameObject);
-        }
+        GameState = GameState.GameOver;
+        //foreach (Fruit fruit in FindObjectsOfType<Fruit>())
+        //{
+        //    Destroy(fruit.gameObject);
+        //}
     }
+}
+public enum GameState
+{
+    Title,
+    InGame,
+    GameOver,
 }

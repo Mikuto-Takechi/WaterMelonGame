@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fruitList: {fileID: 11400000, guid: ddb951ed7c3d9cb4bb9681f948a18178, type: 2}
+  _particle: {fileID: 1791939458464759965, guid: 842137705fa1b9542a10202387a2565c, type: 3}

@@ -6,13 +6,14 @@ using UnityEngine;
 public class FruitManager : MonoBehaviour
 {
     [SerializeField] FruitList _fruitList;
-    public static FruitManager instance;
-    public HashSet<Tuple<Fruit, Fruit>> _fruits { get; set; } = new(new SameTuplesComparer());
+    [SerializeField] GameObject _particle;
+    public static FruitManager Instance;
+    public HashSet<Tuple<Fruit, Fruit>> Fruits { get; set; } = new(new SameTuplesComparer());
     private void Awake()
     {
-        if(instance == null )
+        if(Instance == null )
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad( gameObject );
         }
         else
@@ -22,17 +23,17 @@ public class FruitManager : MonoBehaviour
     }
     void Update()
     {
-        if(_fruits.Count > 0)
+        if(Fruits.Count > 0)
         {
-            foreach (var fruit in _fruits)
+            foreach (var fruit in Fruits)
             {
                 Vector3 instantiatePosition = Vector3.Lerp(fruit.Item1.transform.position, fruit.Item2.transform.position, 0.5f);
                 Destroy(fruit.Item1.gameObject);
                 Destroy(fruit.Item2.gameObject);
-                AudioManager.instance.PlaySE("kotsudumi");
-                NewFruit(fruit.Item1._level, instantiatePosition);
+                AudioManager.instance.PlaySE("プールでダイビング");
+                NewFruit(fruit.Item1.Level, instantiatePosition);
             }
-            _fruits.Clear();
+            Fruits.Clear();
         }
     }
     void NewFruit(int level, Vector3 position)
@@ -44,53 +45,54 @@ public class FruitManager : MonoBehaviour
                 Instantiate(_fruitList.Level0, position, Quaternion.identity);
                 break;
             case 1:
-                GameManager.instance.Score += 1;
+                GameManager.Instance.Score += 1;
                 Instantiate(_fruitList.Level1, position, Quaternion.identity);
                 break;
             case 2:
-                GameManager.instance.Score += 3;
+                GameManager.Instance.Score += 3;
                 Instantiate(_fruitList.Level2, position, Quaternion.identity);
                 break;
             case 3:
-                GameManager.instance.Score += 6;
+                GameManager.Instance.Score += 6;
                 Instantiate(_fruitList.Level3, position, Quaternion.identity);
                 break;
             case 4:
-                GameManager.instance.Score += 10;
+                GameManager.Instance.Score += 10;
                 Instantiate(_fruitList.Level4, position, Quaternion.identity);
                 break;
             case 5:
-                GameManager.instance.Score += 15;
+                GameManager.Instance.Score += 15;
                 Instantiate(_fruitList.Level5, position, Quaternion.identity);
                 break;
             case 6:
-                GameManager.instance.Score += 21;
+                GameManager.Instance.Score += 21;
                 Instantiate(_fruitList.Level6, position, Quaternion.identity);
                 break;
             case 7:
-                GameManager.instance.Score += 28;
+                GameManager.Instance.Score += 28;
                 Instantiate(_fruitList.Level7, position, Quaternion.identity);
                 break;
             case 8:
-                GameManager.instance.Score += 36;
+                GameManager.Instance.Score += 36;
                 Instantiate(_fruitList.Level8, position, Quaternion.identity);
                 break;
             case 9:
-                GameManager.instance.Score += 45;
+                GameManager.Instance.Score += 45;
                 Instantiate(_fruitList.Level9, position, Quaternion.identity);
                 break;
             case 10:
-                GameManager.instance.Score += 55;
+                GameManager.Instance.Score += 55;
                 Instantiate(_fruitList.Level10, position, Quaternion.identity);
                 break;
         }
+        Destroy(Instantiate(_particle, position, Quaternion.identity), 1);
     }
 }
 class SameTuplesComparer : EqualityComparer<Tuple<Fruit, Fruit>>
 {
     public override bool Equals(Tuple<Fruit, Fruit> t1, Tuple<Fruit, Fruit> t2)
     {
-        return t1.Item1._selfNumber.Equals(t2.Item1._selfNumber) || t1.Item2._selfNumber.Equals(t2.Item2._selfNumber) || t1.Item1._selfNumber.Equals(t2.Item2._selfNumber) || t1.Item2._selfNumber.Equals(t2.Item1._selfNumber);
+        return t1.Item1.SelfNumber.Equals(t2.Item1.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item1.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item1.SelfNumber);
     }
 
 

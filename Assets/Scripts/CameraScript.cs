@@ -10,6 +10,7 @@ public class CameraScript : MonoBehaviour
     private Vector2 lastMousePosition;
     void Update()
     {
+        if (GameManager.Instance.GameState == GameState.GameOver) return;
         if (Input.GetButtonDown("Fire2"))
         {
             lastMousePosition = Input.mousePosition;
@@ -20,7 +21,6 @@ public class CameraScript : MonoBehaviour
             {
                 var newPositionY = (Input.mousePosition.y - lastMousePosition.y) * verticalSpeed;
                 var y = (lastMousePosition.x - Input.mousePosition.x);
-
                 var newAngle = Vector3.zero;
                 newAngle.y = y * rotationSpeed;
                 transform.position = new Vector3(transform.position.x, transform.position.y + newPositionY, transform.position.z);
@@ -39,7 +39,7 @@ public class CameraScript : MonoBehaviour
                 lastMousePosition = Input.mousePosition;
             }
             var clampVertical = transform.position;
-            clampVertical.y = Mathf.Clamp(clampVertical.y, -5, 10);
+            clampVertical.y = Mathf.Clamp(clampVertical.y, -5, 15);
             transform.position = clampVertical;
         }
     }
