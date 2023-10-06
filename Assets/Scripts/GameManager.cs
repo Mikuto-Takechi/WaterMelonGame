@@ -1,11 +1,14 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : SingletonBase<GameManager>
 {
     public float GameOverLine = 10;
     public int Score { get; set; } = 0;
+    public string ScoreText { get; set; } = "000000";
     public GameState GameState { get; set; } = GameState.InGame;
     protected override void DoAwake(){}
     public void GameOver()
@@ -17,6 +20,11 @@ public class GameManager : SingletonBase<GameManager>
         //{
         //    Destroy(fruit.gameObject);
         //}
+    }
+    public void AddScore(int add)
+    {
+        DOVirtual.Float(Score, Score + add, 1, val => ScoreText = val.ToString("000000"))
+          .OnComplete(() => Score += add);
     }
 }
 public enum GameState

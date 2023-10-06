@@ -2530,7 +2530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130535381}
-  m_LocalRotation: {x: 0.021676682, y: -0.0000000010751463, z: 2.3311082e-11, w: 0.99976504}
+  m_LocalRotation: {x: 0.021676682, y: 0.0000000010751459, z: -2.3311072e-11, w: 0.99976504}
   m_LocalPosition: {x: 0, y: 5, z: -23.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3989,7 +3989,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614968504}
-  m_LocalRotation: {x: 0.021676682, y: -0.0000000010751463, z: 2.3311082e-11, w: 0.99976504}
+  m_LocalRotation: {x: 0.021676682, y: 0.0000000010751459, z: -2.3311072e-11, w: 0.99976504}
   m_LocalPosition: {x: 0, y: 5, z: -23.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5864,7 +5864,7 @@ GameObject:
   - component: {fileID: 7411199573797195079}
   m_Layer: 0
   m_Name: Pipe
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

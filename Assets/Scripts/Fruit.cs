@@ -32,7 +32,7 @@ public class Fruit : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(_gameOverJudgment == false)
+        if(_gameOverJudgment == false && !collision.gameObject.CompareTag("Wall"))
         {
             _gameOverJudgment = true;
             gameObject.layer = 0;
