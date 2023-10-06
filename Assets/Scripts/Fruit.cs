@@ -32,7 +32,11 @@ public class Fruit : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        _gameOverJudgment = true;
+        if(_gameOverJudgment == false)
+        {
+            _gameOverJudgment = true;
+            gameObject.layer = 0;
+        }
         if (collision.gameObject.TryGetComponent(out Fruit fruit))
         {
             if (fruit.Level == Level && Level < 10 && SelfNumber > fruit.SelfNumber)

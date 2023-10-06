@@ -2,25 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class FruitManager : MonoBehaviour
+public class FruitManager : SingletonBase<FruitManager>
 {
     [SerializeField] FruitList _fruitList;
     [SerializeField] GameObject _particle;
-    public static FruitManager Instance;
     public HashSet<Tuple<Fruit, Fruit>> Fruits { get; set; } = new(new SameTuplesComparer());
-    private void Awake()
-    {
-        if(Instance == null )
-        {
-            Instance = this;
-            DontDestroyOnLoad( gameObject );
-        }
-        else
-        {
-            Destroy( gameObject );
-        }
-    }
+    protected override void DoAwake(){}
     void Update()
     {
         if(Fruits.Count > 0)
@@ -30,7 +17,7 @@ public class FruitManager : MonoBehaviour
                 Vector3 instantiatePosition = Vector3.Lerp(fruit.Item1.transform.position, fruit.Item2.transform.position, 0.5f);
                 Destroy(fruit.Item1.gameObject);
                 Destroy(fruit.Item2.gameObject);
-                AudioManager.instance.PlaySE("プールでダイビング");
+                AudioManager.Instance.PlaySE("プールでダイビング");
                 NewFruit(fruit.Item1.Level, instantiatePosition);
             }
             Fruits.Clear();
@@ -94,8 +81,6 @@ class SameTuplesComparer : EqualityComparer<Tuple<Fruit, Fruit>>
     {
         return t1.Item1.SelfNumber.Equals(t2.Item1.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item1.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item1.SelfNumber);
     }
-
-
     public override int GetHashCode(Tuple<Fruit, Fruit> t)
     {
         return base.GetHashCode();

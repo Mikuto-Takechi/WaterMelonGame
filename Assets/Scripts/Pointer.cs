@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Pointer : MonoBehaviour
 {
@@ -9,13 +11,19 @@ public class Pointer : MonoBehaviour
     [SerializeField] float _interval = 2;
     [SerializeField] float _moveSpeed = 1.0f;
     [SerializeField] Animator _handAnimator;
+    [SerializeField] Transform _ripple;
     GameObject _nextFruit;
     GameObject _dropFruit;
     bool _createFruitFlag = true;
     float inputHorizontal;
     float inputVertical;
+    LineRenderer _lineRenderer;
+    ReactiveProperty<Vector3> _pointerPosition = new();
     void Start()
     {
+        _lineRenderer = GetComponent<LineRenderer>();
+        _pointerPosition.Value = transform.position;
+        _pointerPosition.Subscribe(_ => OnRay());
         CreateFruit();
         SetFruit();
         CreateFruit();
@@ -36,10 +44,26 @@ public class Pointer : MonoBehaviour
         {
             _createFruitFlag = false;
             _handAnimator.Play("Idle");
-            AudioManager.instance.PlaySE("決定ボタンを押す44");
+            AudioManager.Instance.PlaySE("決定ボタンを押す44");
             DropFruit();
         }
+        _pointerPosition.Value = transform.position;
     }
+    void OnRay()
+    {
+        float lazerDistance = 100f;
+        Vector3 direction = Vector3.down * lazerDistance;
+        Vector3 pos = transform.position;
+        Ray ray = new Ray(pos, Vector3.down);
+        _lineRenderer.SetPosition(0, pos);
+        if (Physics.Raycast(ray, out RaycastHit hit, lazerDistance, ~(1 << 7 | 1 << 6 | 1 << 3)))
+        {
+            _lineRenderer.SetPosition(1, hit.point);
+            _ripple.transform.position = hit.point;
+        }
+        Debug.DrawRay(ray.origin, Vector3.down, Color.red, 0.1f);
+    }
+
     void CreateFruit()
     {
         _nextFruit = Random.Range(0, 4) switch
@@ -58,7 +82,7 @@ public class Pointer : MonoBehaviour
     {
         if (_nextFruit.gameObject == null) return;
         _dropFruit = _nextFruit;
-        _dropFruit.layer = 0;
+        _dropFruit.layer = 7;
         _dropFruit.transform.SetParent(transform);
         Vector3 dropPosition = transform.position;
         dropPosition.y += -2;

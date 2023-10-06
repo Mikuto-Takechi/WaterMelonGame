@@ -3,27 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : SingletonBase<AudioManager>
 {
-    public static AudioManager instance;
     Dictionary<string, BGM> _bgmDic = new();
     Dictionary<string, AudioClip> _seDic = new();
     AudioSource _seSource;
-    void Awake()
+    protected override void DoAwake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            foreach (var clip in Resources.LoadAll<AudioClip>("BGM"))
-                _bgmDic.Add(clip.name, new BGM(clip, gameObject.AddComponent<AudioSource>()));
-            foreach (var clip in Resources.LoadAll<AudioClip>("SE"))
-                _seDic.Add(clip.name, clip);
-            _seSource = gameObject.AddComponent<AudioSource>();
-            _seSource.playOnAwake = false;
-        }
-        else
-            Destroy(gameObject);
+        foreach (var clip in Resources.LoadAll<AudioClip>("BGM"))
+            _bgmDic.Add(clip.name, new BGM(clip, gameObject.AddComponent<AudioSource>()));
+        foreach (var clip in Resources.LoadAll<AudioClip>("SE"))
+            _seDic.Add(clip.name, clip);
+        _seSource = gameObject.AddComponent<AudioSource>();
+        _seSource.playOnAwake = false;
     }
     void OnEnable()
     {
