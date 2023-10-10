@@ -2,8 +2,6 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-
 public class GameManager : SingletonBase<GameManager>
 {
     public float GameOverLine = 10;
