@@ -35,7 +35,7 @@ public class AudioManager : SingletonBase<AudioManager>
         if (_seDic.ContainsKey(name))
             _seSource.PlayOneShot(_seDic[name]);
         else
-            Debug.Log("その名前のSEクリップが存在しません");
+            Debug.LogError("その名前のSEクリップが存在しません");
     }
     public void PlayBGM(string name)
     {
@@ -45,7 +45,7 @@ public class AudioManager : SingletonBase<AudioManager>
             _bgmDic[name].audioSource.Play();
         }
         else
-            Debug.Log("その名前のBGMクリップが存在しません");
+            Debug.LogError("その名前のBGMクリップが存在しません");
     }
     /// <summary>
     /// BGMのポーズ、ポーズ解除を設定する
@@ -62,14 +62,14 @@ public class AudioManager : SingletonBase<AudioManager>
                 _bgmDic[name].audioSource.UnPause();
         }
         else
-            Debug.Log("その名前のBGMクリップが存在しません");
+            Debug.LogError("その名前のBGMクリップが存在しません");
     }
     public void StopBGM(string name)
     {
         if (_bgmDic.ContainsKey(name))
             _bgmDic[name].audioSource.Stop();
         else
-            Debug.Log("その名前のBGMクリップが存在しません");
+            Debug.LogError("その名前のBGMクリップが存在しません");
     }
 }
 class BGM

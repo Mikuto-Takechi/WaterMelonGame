@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4828c1f079f8c43bf3be3e4b5df686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverLine: 9.6
+  GameOverLine: 6.18
