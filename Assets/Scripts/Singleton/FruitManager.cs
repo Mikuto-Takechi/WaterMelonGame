@@ -79,7 +79,8 @@ class SameTuplesComparer : EqualityComparer<Tuple<Fruit, Fruit>>
 {
     public override bool Equals(Tuple<Fruit, Fruit> t1, Tuple<Fruit, Fruit> t2)
     {
-        return t1.Item1.SelfNumber.Equals(t2.Item1.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item1.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item1.SelfNumber);
+        return t1.Item1.SelfNumber.Equals(t2.Item1.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item2.SelfNumber)
+            || t1.Item1.SelfNumber.Equals(t2.Item2.SelfNumber) || t1.Item2.SelfNumber.Equals(t2.Item1.SelfNumber);
     }
     public override int GetHashCode(Tuple<Fruit, Fruit> t)
     {
