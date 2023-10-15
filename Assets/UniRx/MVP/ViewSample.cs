@@ -3,38 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ProgressBar : MonoBehaviour
+public class ViewSample : MonoBehaviour
 {
     [SerializeField] Image _greenGauge;
     [SerializeField] Image _redGauge;
     [SerializeField] Text _progressText;
-    [SerializeField] float _max = 20;
-    float _current = 0;
+    float _current = 0, _max = 0;
     Tween _redGaugeTween, _greenGaugeTween;
-    void Start()
-    {
-        _current = _max;
-    }
     void Update()
     {
         _progressText.text = $"{_current.ToString("0")} / {_max}";
     }
-    public void Increase(float amount)
+    public void SetMax(int value)
     {
-        float increase = Mathf.Clamp(_current + amount, 0, _max);
-        ChangeValue(increase);
-        _current = increase;
+        _max = value;
     }
-    public void Decrease(float amount)
-    {
-        float decrease = Mathf.Clamp(_current - amount, 0, _max);
-        ChangeValue(decrease);
-        _current = decrease;
-    }
-    void ChangeValue(float value)
+    public void SetCurrent(int newValue)
     {
         float valueFrom = _current / _max;
-        float valueTo = value / _max;
+        float valueTo = newValue / _max;
 
         if (_greenGaugeTween != null) _greenGaugeTween.Kill();
         _greenGaugeTween = DOTween.To(() => valueFrom,
@@ -45,5 +32,6 @@ public class ProgressBar : MonoBehaviour
         _redGaugeTween = DOTween.To(() => valueFrom,
                     newValue => _redGauge.fillAmount = newValue,
                     valueTo, 0.5f);
+        _current = newValue;
     }
 }

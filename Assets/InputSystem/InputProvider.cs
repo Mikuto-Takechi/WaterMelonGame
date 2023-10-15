@@ -18,7 +18,7 @@ public class InputProvider : MonoBehaviour
     void Awake()
     {
         _gameInputs = new();
-        _gameInputs.Player.Move.performed += context => Debug.Log(context.ReadValue<Vector2>());
-        _gameInputs.Player.Move.canceled += context => Debug.Log("canceled");
+        _gameInputs.Player.Move.performed += context => _moveDir = context.ReadValue<Vector2>();
+        _gameInputs.Player.Move.canceled += context => _moveDir = Vector2.zero;
     }
 }
