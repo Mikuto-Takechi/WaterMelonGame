@@ -1,36 +1,41 @@
 using UnityEngine;
 using System.IO;
 using System;
-using System.Text;
+using AESCryptography;
 
 public static class JsonSave
 {
-    static string _testJsonFileName = "/TestSaveData.bin";
-    static readonly string dataPath = Application.persistentDataPath;
+    static string _testJsonFileName = "/StreamingAssets/TestSaveData.bin";
+    static readonly string dataPath = Application.dataPath;
     public static void Save(SaveData saveData)
     {
         string jsonData = JsonUtility.ToJson(saveData);
-        byte[] encryptedData = AESSample.Encrypt(jsonData, AES_IV_KEY.AES_IV_256, AES_IV_KEY.AES_Key_256);
+        byte[] encryptedData = AES.Encrypt(jsonData, IVAndKEY.AES_IV_256, IVAndKEY.AES_Key_256);
         File.WriteAllBytes(dataPath + _testJsonFileName, encryptedData);
     }
-    public static void Load()
+    public static SaveData Load()
     {
         byte[] encryptedData = File.ReadAllBytes(dataPath + _testJsonFileName);
+        string decryptedData = string.Empty;
         try
         {
-            Debug.Log(AESSample.Decrypt(encryptedData, AES_IV_KEY.AES_IV_256, AES_IV_KEY.AES_Key_256));
+            decryptedData = AES.Decrypt(encryptedData, IVAndKEY.AES_IV_256, IVAndKEY.AES_Key_256);
         }
-        // Jsonへの展開失敗　改ざんの可能性あり
+        // 復号出来なかった場合の処理
         catch (Exception e)
         {
             Debug.LogException(e);
-            Debug.Log("データが破損しています");
+            Debug.LogError("セーブデータが破損しています");
         }
+        if(decryptedData != string.Empty)
+        {
+            return JsonUtility.FromJson<SaveData>(decryptedData);
+        }
+        return default;
     }
 }
 [Serializable]
 public struct SaveData
 {
-    public string Header;
-    public string Data;
+    public int BestScore;
 }

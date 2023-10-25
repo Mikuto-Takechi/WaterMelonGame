@@ -17,7 +17,7 @@ public class ScoreText : MonoBehaviour
         _text.text = _textType switch
         {
             TextType.Score => GameManager.Instance.ScoreText,
-            TextType.BestScore => GameManager.Instance.BestScore.ToString(),
+            TextType.BestScore => GameManager.Instance.SaveData.BestScore.ToString(),
         };
     }
     enum TextType
