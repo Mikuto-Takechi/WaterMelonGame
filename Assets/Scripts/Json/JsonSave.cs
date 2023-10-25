@@ -5,17 +5,20 @@ using AESCryptography;
 
 public static class JsonSave
 {
-    static string _testJsonFileName = "/StreamingAssets/TestSaveData.bin";
-    static readonly string dataPath = Application.dataPath;
+    static string _testJsonFileName = "TestSaveData.bin";
+    static readonly string DATA_PATH = Application.dataPath + "/StreamingAssets/";
     public static void Save(SaveData saveData)
     {
         string jsonData = JsonUtility.ToJson(saveData);
         byte[] encryptedData = AES.Encrypt(jsonData, IVAndKEY.AES_IV_256, IVAndKEY.AES_Key_256);
-        File.WriteAllBytes(dataPath + _testJsonFileName, encryptedData);
+        File.WriteAllBytes(DATA_PATH + _testJsonFileName, encryptedData);
     }
     public static SaveData Load()
     {
-        byte[] encryptedData = File.ReadAllBytes(dataPath + _testJsonFileName);
+        if (!File.Exists(DATA_PATH + _testJsonFileName)) // ファイルがパス上に存在しない場合にdefault値を返す。
+            return default;
+
+        byte[] encryptedData = File.ReadAllBytes(DATA_PATH + _testJsonFileName);
         string decryptedData = string.Empty;
         try
         {
