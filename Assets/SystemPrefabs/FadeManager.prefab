@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2198983064284807125}
   - component: {fileID: 2198983064284807121}
   m_Layer: 5
-  m_Name: SceneAdminister
+  m_Name: FadeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

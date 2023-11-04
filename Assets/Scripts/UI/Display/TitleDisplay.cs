@@ -11,6 +11,8 @@ public class TitleDisplay : BaseDisplay
     protected override void DoStart()
     {
         SetState(Display.State.Main);
+        _startButton.OnClickAsObservable()
+            .Subscribe(_ => CustomSceneManager.LoadSceneWithFade("Ingame"));
         _optionButton.OnClickAsObservable()
             .Subscribe(_ => _displayInstance.ChangeDisplay(Display.State.Option)).AddTo(gameObject);
         _licenseButton.OnClickAsObservable()
