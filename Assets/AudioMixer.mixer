@@ -14,8 +14,8 @@ AudioMixerGroupController:
   m_Pitch: 0d0ef6930d88b1f42932f5dac77f8a3a
   m_Send: 00000000000000000000000000000000
   m_Effects:
-  - {fileID: 3882085747860738648}
   - {fileID: -4692691734215571200}
+  - {fileID: -4249628567800010937}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -34,12 +34,34 @@ AudioMixerGroupController:
   m_Pitch: 82841ef376ceda64dbbf0124afe505ed
   m_Send: 00000000000000000000000000000000
   m_Effects:
-  - {fileID: 91618377305486495}
   - {fileID: -2490096251041585456}
+  - {fileID: -4706397918394715022}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-4706397918394715022
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ac540421255c2504caa29793c7d499fa
+  m_EffectName: Compressor
+  m_MixLevel: f6d4d8a74e623bd498e203ea14d9359d
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: bb376e38bb3f2484c9f03dcc8a7c503a
+  - m_ParameterName: Attack
+    m_GUID: dc8d0ecb3f4eecc4cbc32d7572e33593
+  - m_ParameterName: Release
+    m_GUID: f23653c1437922645a624b795f4264a6
+  - m_ParameterName: Make up gain
+    m_GUID: 5550bd87d777c3e49866224f082ad99b
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4692691734215571200
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -51,6 +73,28 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 982e206e868431d478fcf84d92dc3cf3
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-4249628567800010937
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 386f412d332e312498c4e60f65b499d0
+  m_EffectName: Compressor
+  m_MixLevel: e9634440ba1d42845bbd373389f1a4ca
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: 78ba1443f5a3ca041b401ba0c0d02d19
+  - m_ParameterName: Attack
+    m_GUID: 4f0a67af1e7449842b5a5ac9d1ba3344
+  - m_ParameterName: Release
+    m_GUID: 6d4ec18086a5b354fa66abd95b74a808
+  - m_ParameterName: Make up gain
+    m_GUID: 52f2fbfde3e85a04e8cfd4509e693b36
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
@@ -83,7 +127,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: f198a390755bb564eab599b9a8918ac5
+    name: BGM_Group
+  - guid: f081417490b5508439a5bf437489fb09
+    name: Master
+  - guid: e1147fda25e47114c9a2b57f54454369
+    name: SE_Group
   m_AudioMixerGroupViews:
   - guids:
     - 5a9abcb1be17be24ebc407c86fe7d65a
@@ -137,48 +187,15 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 2b8cb80fcb35d9541986eec647564279
   m_FloatValues:
-    f198a390755bb564eab599b9a8918ac5: 0.025578288
+    f198a390755bb564eab599b9a8918ac5: -0.10231434
+    0d0ef6930d88b1f42932f5dac77f8a3a: 1
+    82841ef376ceda64dbbf0124afe505ed: 1
+    f081417490b5508439a5bf437489fb09: -0.43201253
+    efee2d863b4c53f43a00e20548f2f175: 200
+    94f2bb5720aa6e0449f7e84082f83080: 0
+    5550bd87d777c3e49866224f082ad99b: 0
     d231d1696aa5224488536e0d83886cea: 20
-    e1147fda25e47114c9a2b57f54454369: 0
+    e1147fda25e47114c9a2b57f54454369: -0.3016385
+    84284d3b0ece5cb47b24052a51234a2e: 20
     b71950abc3a11234385c1700a06ac352: 20
   m_TransitionOverrides: {}
---- !u!244 &91618377305486495
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 06453b739dfefcf4e8504ef3553151bc
-  m_EffectName: Normalize
-  m_MixLevel: e1f68f98c8d11934eb57cfe8c2159282
-  m_Parameters:
-  - m_ParameterName: Fade in time
-    m_GUID: 67bc839f5d1c4e747a32fb4eced91f15
-  - m_ParameterName: Lowest volume
-    m_GUID: 016e35d053f8cf5449592af3aec365ef
-  - m_ParameterName: Maximum amp
-    m_GUID: 4bc40bd09bcd4284aa72be98f0a9842b
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &3882085747860738648
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: a2b9ea918adfe394f8c1137a623479d8
-  m_EffectName: Normalize
-  m_MixLevel: f13ecf122ebe49d4db687ebd1b7955c8
-  m_Parameters:
-  - m_ParameterName: Fade in time
-    m_GUID: 5e7eef4b5c4e77d4b97c2930cc848556
-  - m_ParameterName: Lowest volume
-    m_GUID: 3c83a7430899f4f48ad5abd0293cbf26
-  - m_ParameterName: Maximum amp
-    m_GUID: d231d1696aa5224488536e0d83886cea
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0

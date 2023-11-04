@@ -7,7 +7,7 @@ public class GameManager : SingletonBase<GameManager>
     public float GameOverLine = 10;
     public int Score { get; set; } = 0;
     public string ScoreText { get; set; } = "000000";
-    public GameState GameState { get; set; } = GameState.InGame;
+    public GameState GameState { get; set; } = GameState.Title;
     SaveData _saveData = new();
     public SaveData SaveData => _saveData;
     protected override void DoAwake()

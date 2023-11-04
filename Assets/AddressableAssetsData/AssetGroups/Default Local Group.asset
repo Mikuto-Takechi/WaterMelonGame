@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 56a02db651e6f7242b5b52e36b2b9c11
+  m_SerializeEntries:
+  - m_GUID: 867dac40e92f8d048b7d685378454997
+    m_Address: Assets/SystemPrefabs/AudioManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3ce7dc172f2276449b881f29c61394c1
+    m_Address: Assets/SystemPrefabs/FruitManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e4c8d5d13faf9d44b7ac150878e346c
+    m_Address: Assets/SystemPrefabs/GameManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aee6dd871967e484c850e4ca6b2efafa
+    m_Address: Assets/SystemPrefabs/SceneAdminister.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fcde4ddf7b10c984e9df71a2aafb64f6
+    m_Address: Assets/SystemPrefabs/PauseDisplay.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 717f6bbfe09d0ef47a1c12982b0fde0e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5371feb50fada6d49bf5b595b1c886c7, type: 2}
+    - {fileID: 11400000, guid: 49b1cb77e1fdaa946b3c5435e0bf2fb0, type: 2}

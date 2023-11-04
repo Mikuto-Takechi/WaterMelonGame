@@ -1,18 +1,20 @@
 using UnityEngine;
+
 public abstract class SingletonBase<T> : MonoBehaviour where T : Component
 {
-    public static T Instance { get; private set; }
+    static T _instance;
+    public static T Instance { get => _instance; }
     /// <summary>Awakeのタイミングで実行したい処理を書く</summary>
     protected abstract void DoAwake();
     protected void Awake()
     {
-        if (Instance)
+        if (_instance)
         {
             Destroy(gameObject);
         }
         else
         {
-            Instance = this as T;
+            _instance = this as T;
             DontDestroyOnLoad(gameObject);
             DoAwake();
         }

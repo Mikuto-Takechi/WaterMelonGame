@@ -18,6 +18,7 @@ public class ScoreText : MonoBehaviour
         {
             TextType.Score => GameManager.Instance.ScoreText,
             TextType.BestScore => GameManager.Instance.SaveData.BestScore.ToString(),
+            _ => throw new System.NotImplementedException(),
         };
     }
     enum TextType

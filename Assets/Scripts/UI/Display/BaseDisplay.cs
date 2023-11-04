@@ -1,7 +1,6 @@
 using System;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UI;
 using VContainer;
 
 [RequireComponent(typeof(CanvasGroup))]
